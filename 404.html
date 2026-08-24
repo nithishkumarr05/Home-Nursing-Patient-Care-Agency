@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Page Not Found | CareNest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="assests/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assests/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            const direction = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', direction);
+        })();
+
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'care-blue': '#1A5276',
+                        'care-teal': '#1ABC9C',
+                        'care-light': '#F0F8FF',
+                        'care-dark': '#0B1E26'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            background: #F0F8FF;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            min-height: 100vh;
+        }
+        .dark body {
+            background: #0B1E26;
+            color: #f8fafc;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(26, 188, 156, 0.25);
+        }
+        .dark .glass-card {
+            background: rgba(30, 30, 30, 0.75) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .text-left {
+            text-align: right !important;
+        }
+        [dir="rtl"] .lg\:text-left {
+            text-align: right !important;
+        }
+        [dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+        [dir="rtl"] .ml-auto {
+            margin-right: auto;
+            margin-left: unset;
+        }
+        [dir="rtl"] .mr-auto {
+            margin-left: auto;
+            margin-right: unset;
+        }
+
+        /* Dark mode text colors */
+        .dark .text-dark { color: #f8fafc !important; }
+        .dark .text-dark\/70 { color: #cbd5e1 !important; }
+        .dark .text-dark\/60 { color: #94a3b8 !important; }
+        .dark .text-dark\/50 { color: #64748b !important; }
+        .dark .text-dark\/40 { color: #94a3b8 !important; }
+        .dark .text-dark\/30 { color: #94a3b8 !important; }
+        .dark .bg-white { background-color: #1e1e1e !important; }
+        .dark .bg-bg { background-color: #121212 !important; }
+        .dark .bg-secondary\/30 { background-color: rgba(26, 188, 156, 0.1) !important; }
+        .dark .border-secondary { border-color: rgba(255, 255, 255, 0.1) !important; }
+        .dark .border-secondary\/40 { border-color: rgba(255, 255, 255, 0.1) !important; }
+        .dark .border-secondary\/50 { border-color: rgba(255, 255, 255, 0.1) !important; }
+        .dark .border-secondary\/60 { border-color: rgba(255, 255, 255, 0.15) !important; }
+        .dark .border-white\/10 { border-color: rgba(255, 255, 255, 0.08) !important; }
+        .dark .border-white\/15 { border-color: rgba(255, 255, 255, 0.12) !important; }
+        .dark .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(26, 188, 156, 0.25) !important; }
+        .dark .text-white\/30 { color: rgba(255, 255, 255, 0.3) !important; }
+        .dark .text-white\/50 { color: rgba(255, 255, 255, 0.5) !important; }
+        .dark .text-white\/60 { color: rgba(255, 255, 255, 0.6) !important; }
+        .dark .text-white\/70 { color: rgba(255, 255, 255, 0.7) !important; }
+        .dark .text-primary { color: #1ABC9C !important; }
+        .dark .text-accent { color: #1ABC9C !important; }
+        .dark .bg-neutral-900 { background-color: #1a1a1a !important; }
+        .dark .bg-neutral-800 { background-color: #262626 !important; }
+        .dark .hover\:bg-dark:hover { background-color: #262626 !important; }
+        .dark .hover\:text-dark:hover { color: #f8fafc !important; }
+
+        @keyframes float-heart {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(12deg) scale(1.05); }
+        }
+        .animate-float-heart {
+            animation: float-heart 6s ease-in-out infinite;
+        }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2.5s ease-in-out infinite;
+        }
+
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-height: 700px) {
+            .error-content {
+                padding: 20px 24px !important;
+            }
+            .error-emoji {
+                font-size: 3.5rem !important;
+            }
+            .error-title {
+                font-size: 3.5rem !important;
+            }
+            .error-subtitle {
+                font-size: 1.1rem !important;
+            }
+            .error-desc {
+                font-size: 0.8rem !important;
+            }
+            .error-btn {
+                padding: 8px 18px !important;
+                font-size: 0.7rem !important;
+            }
+            .error-logo {
+                font-size: 1.3rem !important;
+            }
+            .error-logo-icon {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 0.9rem !important;
+            }
+            .error-gap {
+                gap: 10px !important;
+            }
+            .error-mt {
+                margin-top: 8px !important;
+            }
+        }
+
+        @media (max-height: 550px) {
+            .error-content {
+                padding: 12px 16px !important;
+            }
+            .error-emoji {
+                font-size: 2.5rem !important;
+            }
+            .error-title {
+                font-size: 2.5rem !important;
+            }
+            .error-subtitle {
+                font-size: 0.9rem !important;
+            }
+            .error-desc {
+                font-size: 0.65rem !important;
+            }
+            .error-btn {
+                padding: 5px 12px !important;
+                font-size: 0.55rem !important;
+            }
+            .error-logo {
+                font-size: 1rem !important;
+            }
+            .error-logo-icon {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 0.7rem !important;
+            }
+            .error-gap {
+                gap: 5px !important;
+            }
+            .error-mt {
+                margin-top: 4px !important;
+            }
+            .error-links {
+                font-size: 0.6rem !important;
+            }
+            .error-note {
+                font-size: 0.5rem !important;
+            }
+        }
+
+        @media (max-height: 450px) {
+            .error-content {
+                padding: 8px 12px !important;
+            }
+            .error-emoji {
+                font-size: 1.8rem !important;
+            }
+            .error-title {
+                font-size: 2rem !important;
+            }
+            .error-subtitle {
+                font-size: 0.75rem !important;
+            }
+            .error-desc {
+                font-size: 0.55rem !important;
+            }
+            .error-btn {
+                padding: 4px 10px !important;
+                font-size: 0.5rem !important;
+            }
+            .error-logo {
+                font-size: 0.85rem !important;
+            }
+            .error-logo-icon {
+                width: 22px !important;
+                height: 22px !important;
+                font-size: 0.6rem !important;
+            }
+            .error-gap {
+                gap: 3px !important;
+            }
+            .error-mt {
+                margin-top: 2px !important;
+            }
+            .error-links {
+                font-size: 0.5rem !important;
+            }
+            .error-note {
+                font-size: 0.45rem !important;
+            }
+        }
+
+        @media (min-height: 900px) {
+            .error-content {
+                padding: 40px 56px !important;
+            }
+            .error-emoji {
+                font-size: 6rem !important;
+            }
+            .error-title {
+                font-size: 6rem !important;
+            }
+        }
+</style>
+</head>
+<body>
+
+    <div class="w-full max-w-5xl max-h-full glass-card p-6 md:p-10 lg:p-14 rounded-[3rem] border border-care-teal/30 dark:border-white/10 shadow-2xl relative overflow-hidden error-content">
+        
+        <!-- Decorative floating hearts -->
+        <div class="absolute -top-16 -right-16 text-care-teal/5 text-7xl lg:text-8xl animate-float-heart pointer-events-none">
+            <i class="fa-solid fa-heartbeat"></i>
+        </div>
+        <div class="absolute -bottom-16 -left-16 text-care-teal/5 text-7xl lg:text-8xl animate-float-heart pointer-events-none" style="animation-delay: 2s;">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 lg:w-96 lg:h-96 bg-care-teal/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-4 md:mb-6">
+            <a href="index.html" class="flex items-center gap-2.5 md:gap-3 group">
+                <div class="bg-care-teal text-white w-10 h-10 md:w-12 lg:w-14 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-care-teal/20 group-hover:bg-care-blue group-hover:scale-105 transition-all duration-300 error-logo-icon">
+                    <i class="fa-solid fa-heartbeat text-base md:text-xl lg:text-2xl"></i>
+                </div>
+                <span class="font-serif font-bold text-xl md:text-2xl lg:text-3xl text-care-teal tracking-wide error-logo">Care<span class="text-white dark:text-white">Nest</span></span>
+            </a>
+        </div>
+
+        <!-- 404 Content -->
+        <div class="text-center max-w-2xl mx-auto space-y-3 md:space-y-4 error-gap">
+            
+            <!-- Big 404 Emoji -->
+            <div class="text-5xl md:text-7xl lg:text-8xl error-emoji animate-bounce-slow">
+                💙
+            </div>
+
+            <!-- 404 Number -->
+            <div class="space-y-1">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-dark dark:text-white tracking-tight error-title">
+                    4<span class="text-care-teal">0</span>4
+                </h1>
+            </div>
+
+            <!-- Message -->
+            <div class="space-y-2 error-mt">
+                <h2 class="text-lg md:text-xl lg:text-2xl font-serif font-bold text-dark dark:text-white error-subtitle">
+                    Oops! Page Not Found
+                </h2>
+                <p class="text-xs md:text-sm lg:text-base text-dark/60 dark:text-white/50 font-medium max-w-md mx-auto leading-relaxed error-desc">
+                    Looks like this page has gone for a checkup. Don't worry, our care team will guide you back home.
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3 pt-2 md:pt-3 error-mt">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-care-teal hover:bg-care-blue text-white px-4 md:px-6 lg:px-8 py-2 md:py-2.5 lg:py-3 rounded-xl font-bold text-[10px] md:text-xs lg:text-sm transition-all duration-300 shadow-lg hover:shadow-care-teal/30 error-btn">
+                    <i class="fa-solid fa-house text-[10px] md:text-xs"></i> Back to Home
+                </a>
+                <a href="services.html" class="inline-flex items-center gap-2 bg-white dark:bg-neutral-800 border border-care-teal/30 dark:border-white/10 hover:border-care-teal text-dark dark:text-white px-4 md:px-6 lg:px-8 py-2 md:py-2.5 lg:py-3 rounded-xl font-bold text-[10px] md:text-xs lg:text-sm transition-all duration-300 shadow-sm error-btn">
+                    <i class="fa-solid fa-heartbeat text-[10px] md:text-xs"></i> Our Services
+                </a>
+                <a href="contact.html" class="inline-flex items-center gap-2 bg-white dark:bg-neutral-800 border border-care-teal/30 dark:border-white/10 hover:border-care-teal text-dark dark:text-white px-4 md:px-6 lg:px-8 py-2 md:py-2.5 lg:py-3 rounded-xl font-bold text-[10px] md:text-xs lg:text-sm transition-all duration-300 shadow-sm error-btn">
+                    <i class="fa-solid fa-envelope text-[10px] md:text-xs"></i> Contact Us
+                </a>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="pt-4 md:pt-5 border-t border-care-teal/20 dark:border-white/5 flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-1 md:gap-y-2 text-[10px] md:text-xs lg:text-sm font-medium text-dark/40 dark:text-white/30 error-links">
+                <a href="about.html" class="hover:text-care-teal transition-colors">About</a>
+                <a href="nurses.html" class="hover:text-care-teal transition-colors">Our Nurses</a>
+                <a href="physio.html" class="hover:text-care-teal transition-colors">Physio</a>
+                <a href="medicines.html" class="hover:text-care-teal transition-colors">Medicines</a>
+            </div>
+
+            <!-- Fun little note -->
+            <p class="text-[8px] md:text-[10px] text-dark/30 dark:text-white/20 font-medium mt-1 md:mt-2 error-note">
+                <i class="fa-regular fa-face-smile mr-1"></i> We'll help you find the care you need!
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Apply RTL from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const dir = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', dir);
+            
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+</body>
+</html>
